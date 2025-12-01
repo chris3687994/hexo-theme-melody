@@ -263,6 +263,23 @@ disqus:
   # serverURL: ''
   # lang: zh-CN
   # avatar: ''
+  
+#giscus comment system. https://giscus.app
+#根据页面上给出的参数逐一填写
+giscus:
+  enable: false     # 设置true开启
+  repo: ""          # 使用giscus的仓库名称
+  repo_id: ""       # 您的 Repo ID
+  category: ""      # 您的讨论分类名称
+  category_id: ""   # 您的 Category ID
+  mapping: ""       # giscus评论映射路径
+  strict: ""
+  reactions_enabled: ""
+  emit_metadata: ""
+  input_position: ""
+  theme: ""          #giscus主题
+  lang: ""
+  loading: ""
 
 # Footer Settings
 # ---------------
