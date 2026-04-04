@@ -18,12 +18,27 @@ $(function () {
     }
   }
 
-  $().fancybox({
-    selector: '[data-fancybox]',
-    loop: true,
-    transitionEffect: 'slide',
-    buttons: ['share', 'slideShow', 'fullScreen', 'download', 'thumbs', 'close']
-  })
+
+Fancybox.bind('[data-fancybox]', {
+  Infinite: true,
+  Carousel: {
+  transition: "slide", 
+  },
+  Toolbar: {
+    display: {
+    left: ["infobar"],
+    middle: [],
+    right: ["share", "slideshow", "fullscreen", "download", "thumbs", "close"],
+    },
+  },
+
+  Images: {
+    Panzoom: {
+      maxScale: 4,
+    },
+  },
+});
+
 
   var galleryItem = $('.gallery-item')
   var galleryList = []
