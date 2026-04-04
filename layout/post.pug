@@ -45,6 +45,7 @@ block top_img
     div#top-container.plain
       include ./includes/header.pug
 
+
 block content
   article#post(class="")
     if (!top_img)
@@ -74,7 +75,13 @@ block content
             span.word-count= wordcount(page.content)
             span.post-meta__separator |
             span= _p('post.min2read', min2read(page.content, {cn: 350, en: 160}))
-    #post-content.article-container!= page.content
+    if (page.expire !== false)
+      include ./includes/post-expire/post-expire.pug
+    else 
+      include ./includes/post-expire/no-expire.pug  
+    #post-content.article-container!= page.content  
+
+
   if (theme.post_copyright && theme.post_copyright.enable)
     .post-copyright
       .post-copyright__author
