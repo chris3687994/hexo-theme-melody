@@ -1,9 +1,7 @@
-script(src='https://gcore.jsdelivr.net/npm/dayjs@1.11.20/dayjs.min.js')
+script(src='https://gcore.jsdelivr.net/npm/dayjs/dayjs.min.js')
 script.
-    const postDate = dayjs(!{page.date})
     const updateDate = dayjs(!{page.updated})
-    const compareDate = dayjs(!{page.raw_updated}).isValid() ? updateDate : postDate
-    const diffDays = dayjs().diff(compareDate, 'day')
+    const diffDays = dayjs().diff(updateDate, 'day')
 
     if(diffDays >= 720) {
         document.write(
@@ -17,5 +15,5 @@ script.
         document.write(
             '<div class="post-expire-info">' + '本文最后更新于' + diffDays + '天前(' + updateDate.format('YYYY-MM-DD') + ')，其中的信息可能已经有所发展，请谨慎参考。' + '</div>')
     }
-    //console.log('脚本加载成功！发表时间: ' + postDate.format('YYYY-MM-DD') + '，最后更新时间: ' + updateDate.format('YYYY-MM-DD') + '，距离现在: ' + diffDays + '天');    
+  
 
