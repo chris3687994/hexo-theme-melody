@@ -14,6 +14,7 @@
 - var pageAuthor = config.email ? config.author + ',' + config.email : config.author
 - var pageCopyright = config.copyright || config.author
 
+
 doctype html
 html(lang=config.language)
   head
@@ -48,9 +49,9 @@ html(lang=config.language)
           div!= body
         else
           block content
-    - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img || true
-    - var bg_img = top_img !== true ? `background-image: url(${top_img})` : ''
-    - var footer_bg_class= bg_img ? 'footer-bg' : ''
+    - var top_img = page.top_img || theme.post_meta.top_img || theme.top_img || config.top_img || false 
+    - var bg_img = top_img && top_img !== true  ? `background-image: url(${top_img})` : ''
+    - var footer_bg_class= top_img === true ? 'footer-bg' : ''
     footer(style=bg_img class=footer_bg_class)
       include ./footer.pug
     i.fa.fa-arrow-up#go-up(aria-hidden="true")

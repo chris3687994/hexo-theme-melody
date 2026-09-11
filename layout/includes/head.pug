@@ -3,6 +3,35 @@ meta(http-equiv="x-dns-prefetch-control" content="on")
 link(rel="dns-prefetch" href="https://gcore.jsdelivr.net")
 link(rel='stylesheet' href='https://gcore.jsdelivr.net/npm/@chinese-fonts/lywkpmydb@2.0.0/dist/LXGWWenKaiMonoScreen/result.min.css') 
 
+//判断主题深色模式脚本
+
+script.
+  (() => {
+   
+    let mode = localStorage.getItem('theme') || 'auto';
+
+    //- 如果没有保存过，使用 auto
+    if (!['light', 'dark', 'auto'].includes(mode)) {
+      mode = 'auto';
+      localStorage.setItem('theme', mode);
+    }
+
+    //- 获取系统当前主题
+    const systemDark = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
+
+    //- 根据模式计算博客最终主题
+    const theme = mode === 'auto' ? (systemDark ? 'dark' : 'light') : mode;
+
+    //- 立即设置主题
+    document.documentElement.dataset.theme = theme;
+  })();
+
+script(src=url_for('/js/dark-theme.js'))
+
+//判断主题深色模式脚本结束
+
 if theme.algolia_search.enable
   link(rel="stylesheet" type="text/css" href="https://gcore.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.css")
   script(src="https://gcore.jsdelivr.net/npm/instantsearch.js@2.1.1/dist/instantsearch.min.js" defer)

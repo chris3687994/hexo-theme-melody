@@ -13,3 +13,22 @@
       a.site-page.social-icon.search
         i.fa.fa-search
         span=' '+_p('search')
+
+  span.pull-right
+    a.site-page.theme-btn(href="javascript:void(0);")
+      i.fa.fa-adjust
+
+      .theme-dropdown
+        div.theme-item(data-theme="light" onclick="Theme.set('light')")
+          i.fas.fa-sun
+          span 浅色模式
+
+        div.theme-item(data-theme="dark" onclick="Theme.set('dark')")
+          i.fas.fa-moon
+          span 深色模式
+
+        div.theme-item(data-theme="auto" onclick="Theme.set('auto')")
+          i.fas.fa-desktop
+          span 跟随系统
+
+

@@ -1,7 +1,9 @@
 if theme.giscus && theme.giscus.enable
 
 
-    script(
+
+
+  script(
       src="https://giscus.app/client.js"
       data-repo=theme.giscus.repo
       data-repo-id=theme.giscus.repo_id
@@ -19,3 +21,51 @@ if theme.giscus && theme.giscus.enable
       async
     )
 
+  // Giscus 主题同步模块
+  script.
+    (() => {
+      function getTheme() {
+        const mode = localStorage.getItem('theme') || 'auto';
+        if (mode === 'dark') return 'dark';
+        if (mode === 'light') return 'light';
+        return matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      function updateGiscus() {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe || !iframe.src.includes('giscus.app')) return;
+
+        iframe.contentWindow.postMessage({
+          giscus: {
+            setConfig: {
+              theme: getTheme()
+            }
+          }
+        }, 'https://giscus.app');
+      }
+      
+      function syncGiscus() {
+        updateGiscus();
+        setTimeout(updateGiscus, 300);
+        setTimeout(updateGiscus, 1000);
+      }
+      // lazy加载完成后同步
+      document.addEventListener('load', e => {
+        if (e.target.tagName === 'IFRAME' &&
+            e.target.classList.contains('giscus-frame')) {
+          syncGiscus();
+        }
+      }, true);
+
+      // 提供给主题切换调用
+      window.GiscusTheme = {
+        update: syncGiscus
+      };
+
+      // auto模式监听系统变化
+      matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+        if (localStorage.getItem('theme') === 'auto') {
+          syncGiscus();
+        }
+      });
+    })();

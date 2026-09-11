@@ -51,6 +51,70 @@
     &:hover
       color: $white
 
+.theme-btn
+  position relative
+  display inline-flex
+  align-items center
+
+    i
+      width 18px
+      min-width 18px
+      text-align center
+
+  
+  .theme-dropdown
+    position absolute
+    top 100%
+    left 0
+
+    display flex
+    flex-direction column
+    gap 4px
+
+    padding-top 8px
+
+    opacity 0
+    visibility hidden
+    transform translateY(-5px)
+
+    transition all .2s ease
+    pointer-events none
+    white-space nowrap
+
+  &:hover
+    .theme-dropdown
+      opacity 1
+      visibility visible
+      transform translateY(0)
+      pointer-events auto
+  
+  .theme-item
+    width 120px
+    height 34px
+    box-sizing border-box
+
+    display flex
+    align-items center
+  
+    padding 0 10px 0 0
+
+    gap 8px
+    border-radius 6px
+
+    cursor pointer
+    white-space nowrap
+
+    i
+      width 18px
+      min-width 18px
+      text-align center
+
+    span
+      white-space nowrap
+
+    &:hover
+      background rgba(128, 128, 128, .5)
+
 #page-header
   position: absolute
   top: 0

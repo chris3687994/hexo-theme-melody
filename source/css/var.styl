@@ -89,3 +89,53 @@ $sidebar-width = 300px
 $sidebar-background = #f6f8fa
 // top_img_height
 $top_img_height = hexo-config("top_img_height") || 60
+
+// dark theme
+$bg-dark = #252C34
+$font-dark = #E3E2E0
+$sidebar-dark-color = #161b22
+$article-title-dark = #E3E2E0
+
+html[data-theme="dark"] 
+  //首页部分
+  *::-webkit-scrollbar-thumb
+    background-color : #6a737d
+  body
+    background-color: $bg-dark
+    color: $font-dark
+  nav#nav
+    background-color : #0d1117
+    color : $font-dark
+  .wave-wrap .wave .parallax > use:nth-child(1) 
+    fill: #252C34
+  .wave-wrap .wave .parallax > use:nth-child(2) 
+    fill: #252C34
+  .wave-wrap .wave .parallax > use:nth-child(3) 
+    fill: #252C34
+  .article-container code
+    color : #E3E2E0
+  #sidebar
+    background-color: #0d1117
+    color: $font-dark
+    box-shadow: 0rem 0 0.25rem rgba(250, 250, 250, 0.5)
+  #toggle-sidebar.fa.fa-arrow-right:before
+    color: $font-dark
+  #page-header
+    background-color: $bg-dark
+    color: $font-dark
+  #page-header.fixed a, #page-header.fixed .toggle-menu, #page-header.fixed #site-name
+    color: $font-dark
+  #content-inner h1,h2,h3,h4,h5,h6
+    color: $font-dark
+  
+  //文章页部分
+  #top-container
+    background-color : #252C34
+  
+  //页脚
+  footer
+    background-color : #0d1117
+    color : $font-dark
+  .recent-post-item .article-title
+    color : #E3E2E0 
+

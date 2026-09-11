@@ -2,12 +2,16 @@ footer
   $bg-svg += ""
   margin-top: 1rem
   background: $light-blue
-  background-image: url($bg-svg)
   background-attachment: fixed
 
   &.footer-bg
-    background-position: bottom
-    background-size: cover
+    $bg-svg += ""
+    background-image: url($bg-svg) !important
+    background-size: initial
+    //$bg-svg += ""
+    //background-position: bottom
+    //background-image: url($bg-svg)
+    //background-size: cover
 
   &.is-mobile
     background-attachment: local
